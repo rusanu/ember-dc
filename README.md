@@ -61,4 +61,4 @@ These two libraries will need to be installed before building.
 To build Ember Session, clone the repository, and run `npm install` to install build dependencies
 and `gulp` to build the library.
 
-Unminified and minified builds of Ember Session will be placed in the `dist` directory
+Unminified and minified builds of Ember DC Components will be placed in the `dist` directory
