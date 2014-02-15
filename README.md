@@ -6,7 +6,7 @@ Ember DC - Multi-Dimensional charting built to work natively with crossfilter re
 
 Ember Component Wrappers for [dc.js](http://nickqizhu.github.io/dc.js/)
 
-I just started wrapping the components so bare with me
+[demo](http://cl.ly/image/3d2T1A0a2420/Screen%20Shot%202014-02-15%20at%204.36.31%20AM.png)
 
 ## Features
 
