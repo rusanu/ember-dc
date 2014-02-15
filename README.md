@@ -31,10 +31,9 @@ If you want more features than this provides, file an issue. Feature requests/co
 //Line Chart Example
 
 {{line-chart
-  defaultMetric=defaultMetric
   metrics=metrics
-  dimension=dateDimension
-  group=dateCompositeGroup
+  dimension=dimensions.date
+  group=groups.dateComposite
   brushOn=true
 }}
 
