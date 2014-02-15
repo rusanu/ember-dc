@@ -33,7 +33,6 @@ Components (templates)
 ```handlebars
 
 // Line Chart Example
-
 {{line-chart
   metrics=metrics
   dimension=dimensions.date
@@ -42,7 +41,6 @@ Components (templates)
 }}
 
 // Pie Chart Example
-
 {{pie-chart
   dimension=dimensions.state
   group=groups.state
@@ -50,7 +48,6 @@ Components (templates)
 }}
 
 // Geo Choropleth Chart Example (US Map)
-
 {{geo-choropleth-chart
   dimension=dimensions.state
   group=groups.state
@@ -58,7 +55,6 @@ Components (templates)
 }}
 
 // Row Chart
-
 {{row-chart
   dimension=dimensions.daysOfWeek
   group=groups.daysOfWeek
