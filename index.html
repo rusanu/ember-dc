@@ -38,7 +38,7 @@
 
 <p>Ember Component Wrappers for <a href="http://nickqizhu.github.io/dc.js/">dc.js</a></p>
 
-<p>I just started wrapping the components so bare with me</p>
+<p><img src="http://cl.ly/image/3d2T1A0a2420/Screen%20Shot%202014-02-15%20at%204.36.31%20AM.png" alt="demo"></p>
 
 <h2>
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
@@ -65,9 +65,73 @@
 <p>Controller</p>
 
 <div class="highlight highlight-javascript"><pre>
-<span class="c1">// Controller Example</span>
+<span class="cm">/**</span>
+<span class="cm"> * @property metrics</span>
+<span class="cm"> * @type {Array}</span>
+<span class="cm"> * Computed Metrics</span>
+<span class="cm"> */</span>
+<span class="nx">metrics</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span><span class="nx">value</span><span class="o">:</span><span class="s1">'sighting'</span><span class="p">,</span>       <span class="nx">label</span><span class="o">:</span> <span class="s1">'Sightings'</span><span class="p">}</span>
+<span class="p">],</span>
+
+<span class="nx">startDate</span><span class="o">:</span> <span class="nx">moment</span><span class="p">().</span><span class="nx">subtract</span><span class="p">(</span><span class="s1">'years'</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+<span class="nx">endDate</span><span class="o">:</span> <span class="nx">moment</span><span class="p">().</span><span class="nx">subtract</span><span class="p">(</span><span class="s1">'years'</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @method _createDimensions</span>
+<span class="cm"> * Create the defined dimensions from the controller.</span>
+<span class="cm"> * @return {void}</span>
+<span class="cm"> * @private</span>
+<span class="cm"> */</span>
+<span class="nx">_createDimensions</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">'content'</span><span class="p">);</span>
+
+  <span class="nx">content</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="nx">moment</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">sighted</span><span class="p">,</span> <span class="s1">'YYYYMMDD'</span><span class="p">).</span><span class="nx">toDate</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">d3</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="s2">"us-states.json"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">statesJson</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'usStates'</span><span class="p">,</span> <span class="nx">statesJson</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Date Dimension</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'dimensions.date'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_crossfilter</span><span class="p">.</span><span class="nx">dimension</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">date</span><span class="p">;</span> <span class="p">}));</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'dimensions.state'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_crossfilter</span><span class="p">.</span><span class="nx">dimension</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span> <span class="p">}));</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'dimensions.daysOfWeek'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_crossfilter</span><span class="p">.</span><span class="nx">dimension</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">date</span><span class="p">.</span><span class="nx">getDay</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">name</span><span class="o">=</span><span class="p">[</span><span class="s2">"Sun"</span><span class="p">,</span><span class="s2">"Mon"</span><span class="p">,</span><span class="s2">"Tue"</span><span class="p">,</span><span class="s2">"Wed"</span><span class="p">,</span><span class="s2">"Thu"</span><span class="p">,</span><span class="s2">"Fri"</span><span class="p">,</span><span class="s2">"Sat"</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nx">day</span><span class="o">+</span><span class="s2">"."</span><span class="o">+</span><span class="nx">name</span><span class="p">[</span><span class="nx">day</span><span class="p">];</span>
+  <span class="p">}));</span>
+<span class="p">},</span>
 
 
+<span class="cm">/**</span>
+<span class="cm"> * @method _createGroups</span>
+<span class="cm"> * Create the defined groups from the controller.</span>
+<span class="cm"> * @return {void}</span>
+<span class="cm"> * @private</span>
+<span class="cm"> */</span>
+<span class="nx">_createGroups</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'groups.all'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_crossfilter</span><span class="p">.</span><span class="nx">groupAll</span><span class="p">());</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'groups.daysOfWeek'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'dimensions.daysOfWeek'</span><span class="p">).</span><span class="nx">group</span><span class="p">());</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'groups.dateComposite'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'dimensions.date'</span><span class="p">).</span><span class="nx">group</span><span class="p">(</span><span class="nx">d3</span><span class="p">.</span><span class="nx">time</span><span class="p">.</span><span class="nx">month</span><span class="p">).</span><span class="nx">reduce</span><span class="p">(</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">v</span><span class="p">){</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">sighting</span><span class="o">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">sighting</span><span class="o">+</span><span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">v</span><span class="p">){</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">sighting</span><span class="o">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">sighting</span><span class="o">-</span><span class="mi">1</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="p">{</span><span class="nx">sighting</span><span class="o">:</span><span class="mi">0</span><span class="p">};}</span>
+  <span class="p">));</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'groups.state'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'dimensions.state'</span><span class="p">).</span><span class="nx">group</span><span class="p">());</span>
+<span class="p">}</span>
 
 </pre></div>
 
@@ -83,7 +147,28 @@
   brushOn=true
 }}
 
+// Pie Chart Example
 
+{{pie-chart
+  dimension=dimensions.state
+  group=groups.state
+  all=groups.all
+}}
+
+// Geo Choropleth Chart Example (US Map)
+
+{{geo-choropleth-chart
+  dimension=dimensions.state
+  group=groups.state
+  geoJSON=usStates
+}}
+
+// Row Chart
+
+{{row-chart
+  dimension=dimensions.daysOfWeek
+  group=groups.daysOfWeek
+}}
 
 </code></pre>
 
@@ -101,9 +186,13 @@ and <code>gulp</code> to build the library.</p>
 <h2>
 <a name="building-example-app" class="anchor" href="#building-example-app"><span class="octicon octicon-link"></span></a>Building Example App</h2>
 
+<p>Be sure to build the library first with <code>gulp</code>.</p>
+
 <p>Run <code>gulp example-app</code> to build the example app.</p>
 
-<p>Open <code>example-app/index.html</code> in the browser</p>
+<p>Run <code>node example-app/server.js</code> to start the server.</p>
+
+<p>Open <a href="http://localhost:3001">http://localhost:3001</a> in the browser.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/andrewreedy">andrewreedy</a></p>
