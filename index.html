@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ember-DC by andrewreedy</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Ember-DC</h1>
+        <p>Ember DC  - Multi-Dimensional charting with crossfilter and d3.js (dc.js)</p>
+
+        <p class="view"><a href="https://github.com/andrewreedy/ember-dc">View the Project on GitHub <small>andrewreedy/ember-dc</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/andrewreedy/ember-dc/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/andrewreedy/ember-dc/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/andrewreedy/ember-dc">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="ember-dc-dcjs" class="anchor" href="#ember-dc-dcjs"><span class="octicon octicon-link"></span></a>Ember DC (dc.js)</h1>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Ember DC - Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js (dc.js)</p>
+
+<p>Ember Component Wrappers for <a href="http://nickqizhu.github.io/dc.js/">dc.js</a></p>
+
+<p>I just started wrapping the components so bare with me</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Responsive Charts</li>
+<li>Multiple Line Chart</li>
+<li>Bar Chart</li>
+<li>Bubble Chart</li>
+<li>Coordinate Grid Chart</li>
+<li>Data Table</li>
+<li>Heat Map</li>
+<li>Number Display</li>
+<li>Pie Chart</li>
+<li>Row Chart</li>
+<li>Scatter Plot</li>
+<li>Stackable Chart</li>
+<li>Geo Choropleth Chart (Map)</li>
+</ul><p>If you want more features than this provides, file an issue. Feature requests/contributions are welcome.</p>
+
+<h2>
+<a name="example-usage" class="anchor" href="#example-usage"><span class="octicon octicon-link"></span></a>Example usage</h2>
+
+<p>Controller</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="c1">// Controller Example</span>
+
+
+
+</pre></div>
+
+<p>Components (templates)</p>
+
+<pre lang="handlebars"><code>
+// Line Chart Example
+
+{{line-chart
+  metrics=metrics
+  dimension=dimensions.date
+  group=groups.dateComposite
+  brushOn=true
+}}
+
+
+
+</code></pre>
+
+<h2>
+<a name="building-ember-dc" class="anchor" href="#building-ember-dc"><span class="octicon octicon-link"></span></a>Building Ember DC</h2>
+
+<p>Ember DC uses <a href="http://nodejs.org/">node.js</a> and <a href="http://gulpjs.com/">gulp</a> as a build system,
+These two libraries will need to be installed before building.</p>
+
+<p>To build Ember DC, clone the repository, and run <code>npm install</code> to install build dependencies
+and <code>gulp</code> to build the library.</p>
+
+<p>Builds of Ember DC will be placed in the <code>dist</code> directory</p>
+
+<h2>
+<a name="building-example-app" class="anchor" href="#building-example-app"><span class="octicon octicon-link"></span></a>Building Example App</h2>
+
+<p>Run <code>gulp example-app</code> to build the example app.</p>
+
+<p>Open <code>example-app/index.html</code> in the browser</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/andrewreedy">andrewreedy</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
