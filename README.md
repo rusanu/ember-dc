@@ -63,4 +63,10 @@ These two libraries will need to be installed before building.
 To build Ember DC, clone the repository, and run `npm install` to install build dependencies
 and `gulp` to build the library.
 
-Unminified and minified builds of Ember DC will be placed in the `dist` directory
+Builds of Ember DC will be placed in the `dist` directory
+
+## Building Example App
+
+Run `gulp example-app` to build the example app.
+
+Open `example-app/index.html` in the browser
