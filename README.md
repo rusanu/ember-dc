@@ -26,9 +26,22 @@ If you want more features than this provides, file an issue. Feature requests/co
 
 ## Example usage
 
+Controller
+
+```javascript
+
+// Controller Example
+
+
+
+```
+
+
+Components (templates)
+
 ```handlebars
 
-//Line Chart Example
+// Line Chart Example
 
 {{line-chart
   metrics=metrics
@@ -36,6 +49,7 @@ If you want more features than this provides, file an issue. Feature requests/co
   group=groups.dateComposite
   brushOn=true
 }}
+
 
 
 ```
