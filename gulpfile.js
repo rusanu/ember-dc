@@ -1,13 +1,10 @@
 var gulp             = require('gulp'),
     jshint           = require('gulp-jshint'),
-    uglify           = require('gulp-uglify'),
     concat           = require('gulp-concat'),
     less             = require('gulp-less'),
     watch            = require('gulp-watch'),
-    size             = require('gulp-size'),
     handlebars       = require('gulp-ember-handlebars'),
     header           = require('gulp-header'),
-    clean            = require('gulp-clean'),
     runSequence      = require('run-sequence'),
     pkg              = require('./package.json');
 
@@ -20,57 +17,84 @@ var banner = [
 ].join('\n');
 
 var paths = {
-  dist: 'dist/',
+  dist: 'dist',
   templates: 'templates/**/*.hbs',
   scripts: [
-    'app/components/*.js'
+    'components/*.js'
   ],
-  styles: 'graph.less'
+  styles: 'style.less'
 };
 
+var appPaths = {
+  dist: 'example-app/dist',
+  templates: 'example-app/index.hbs',
+  scripts: [
+    'example-app/controller.js'
+  ],
+  scripts: [
+    'example-app/controller.js'
+  ],
+  styles: 'example-app/app.less'
+};
+
+// Ember DC
 gulp.task('templates', function() {
-  gulp.src(['app/templates/**/*.hbs'])
-    //.pipe(watch())
+  gulp.src([paths.templates])
     .pipe(handlebars({
       outputType: 'browser',
       processName: function(path) {
-        var files = path.split('/');
-        if(files[0] == 'components' || files[0] == 'admin'){
-          var fixpath = path.replace('.hbs', '');
-        } else {
-          var fixpath = path.replace(files[0]+'/', '').replace('.hbs', '');
-        }
-        return fixpath;
+        return ('components/' + path ).replace('.hbs', '');
       }
      }))
     .pipe(concat('templates.js'))
     .pipe(gulp.dest(paths.dist));
 });
 
-
-gulp.task('clean', function() {
-  return gulp.src('', {read: false})
-    .pipe(clean(paths.dist));
-});
-
-
 gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
     //.pipe(watch())
-    .pipe(concat("app.js"))
-    .pipe(size())
+    .pipe(concat("components.js"))
     .pipe(gulp.dest(paths.dist))
 });
 
 gulp.task('styles', function() {
   return gulp.src(paths.styles)
-    .pipe(watch())
     .pipe(less())
-    .pipe(size())
     .pipe(header(banner, { pkg : pkg } ))
     .pipe(gulp.dest(paths.dist));
 });
 
+// Example App
+gulp.task('app-templates', function() {
+  gulp.src([appPaths.templates])
+    .pipe(handlebars({
+      outputType: 'browser',
+      processName: function(path) {
+        return path.replace('.hbs', '');
+      }
+     }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('app-scripts', function() {
+  return gulp.src(appPaths.scripts)
+    .pipe(concat("components.js"))
+    .pipe(gulp.dest(appPaths.dist))
+});
+
+gulp.task('app-styles', function() {
+  return gulp.src(appPaths.styles)
+    .pipe(less())
+    .pipe(header(banner, { pkg : pkg } ))
+    .pipe(gulp.dest(appPaths.dist));
+});
+
+
 gulp.task('default', function(callback) {
-  runSequence('clean', 'templates', 'scripts', 'styles', callback);
+  runSequence('templates', 'scripts', 'styles', callback);
+});
+
+gulp.task('example-app', function(callback) {
+  runSequence('app-templates', 'app-scripts', 'app-styles', callback);
 });
