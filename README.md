@@ -24,7 +24,7 @@ I just started wrapping the components so bare with me
 - Stackable Chart
 - Geo Choropleth Chart (Map)
 
-If you want more features than this provides, file an issue. Feature requests/contributions are welcome but the goal is to keep things simple and fast.
+If you want more features than this provides, file an issue. Feature requests/contributions are welcome.
 
 ## Example usage
 
