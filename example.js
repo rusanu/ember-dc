@@ -1,161 +1,64 @@
 App.ExampleController = Ember.ArrayController.extend({
 
-  metrics: ['lead_count', 'spend', 'sold_count', 'contacted_count'],
+  // Computed Metrics
+  metrics: [
+    {value:'lead_count', label: 'Leads'},
+    {value:'spend', label: 'Spend'},
+    {value:'sold_count', label: 'Sells'},
+    {value:'contacted_count', label: 'Contacted'}
+  ],
 
-  dummyData: [
-  {
-    "date":"01/09/2014",
-    "spend":1666.56,
-    "lead_count":1671.84,
-    "contact_count":1644.86,
-    "sold_count":1645.09,
-    "volume":19575600,
-    "oi":"0"
-  },
-  {
-    "date":"01/10/2014",
-    "spend":1645.73,
-    "lead_count":1657.31,
-    "contact_count":1634.25,
-    "sold_count":1648.23,
-    "volume":17527000,
-    "oi":"0"
-  },
-  {
-    "date":"01/13/2014",
-    "spend":1656.19,
-    "lead_count":1663.73,
-    "contact_count":1650.94,
-    "sold_count":1653.79,
-    "volume":16495499,
-    "oi":"0"
-  },
-  {
-    "date":"01/14/2014",
-    "spend":1650.93,
-    "lead_count":1682.93,
-    "contact_count":1650.93,
-    "sold_count":1681.15,
-    "volume":19117500,
-    "oi":"0"
-  },
-  {
-    "date":"01/15/2014",
-    "spend":1687.23,
-    "lead_count":1694.90,
-    "contact_count":1680.01,
-    "sold_count":1694.46,
-    "volume":20905200,
-    "oi":"0"
-  },
-  {
-    "date":"01/16/2014",
-    "spend":1701.00,
-    "lead_count":1703.11,
-    "contact_count":1679.05,
-    "sold_count":1679.05,
-    "volume":23442400,
-    "oi":"0"
-  },
-  {
-    "date":"01/17/2014",
-    "spend":1681.22,
-    "lead_count":1690.96,
-    "contact_count":1676.63,
-    "sold_count":1685.66,
-    "volume":25401200,
-    "oi":"0"
-  },
-  {
-    "date":"01/20/2014",
-    "spend":1690.92,
-    "lead_count":1695.04,
-    "contact_count":1684.16,
-    "sold_count":1688.98,
-    "volume":19438200,
-    "oi":"0"
-  },
-  {
-    "date":"01/21/2014",
-    "spend":1688.38,
-    "lead_count":1707.69,
-    "contact_count":1671.20,
-    "sold_count":1672.47,
-    "volume":23604300,
-    "oi":"0"
-  },
-  {
-    "date":"01/22/2014",
-    "spend":1664.17,
-    "lead_count":1678.73,
-    "contact_count":1662.56,
-    "sold_count":1676.32,
-    "volume":21162200,
-    "oi":"0"
-  },
-  {
-    "date":"01/23/2014",
-    "spend":1672.92,
-    "lead_count":1676.28,
-    "contact_count":1660.82,
-    "sold_count":1670.73,
-    "volume":19637500,
-    "oi":"0"
-  },
-  {
-    "date":"01/24/2014",
-    "spend":1676.96,
-    "lead_count":1687.56,
-    "contact_count":1669.17,
-    "sold_count":1679.81,
-    "volume":19280400,
-    "oi":"0"
-  },
-  {
-    "date":"01/27/2014",
-    "spend":1679.38,
-    "lead_count":1687.54,
-    "contact_count":1678.05,
-    "sold_count":1680.63,
-    "volume":18502200,
-    "oi":"0"
-  },
-  {
-    "date":"01/28/2014",
-    "spend":1681.83,
-    "lead_count":1694.60,
-    "contact_count":1667.95,
-    "sold_count":1673.03,
-    "volume":19975100,
-    "oi":"0"
-  },
-  {
-    "date":"01/29/2014",
-    "spend":1676.32,
-    "lead_count":1711.26,
-    "contact_count":1674.88,
-    "sold_count":1703.84,
-    "volume":23753000,
-    "oi":"0"
-  },
-  {
-    "date":"01/30/2014",
-    "spend":1705.99,
-    "lead_count":1720.20,
-    "contact_count":1700.15,
-    "sold_count":1708.68,
-    "volume":21608100,
-    "oi":"0"
-  },
-  {
-    "date":"01/31/2014",
-    "spend":1712.64,
-    "lead_count":1715.62,
-    "contact_count":1701.86,
-    "sold_count":1703.66,
-    "volume":18516200,
-    "oi":"0"
-  }
-]
+  // Crossfilter Dimesions
+  dimensions: [
+    date: null
+  ],
+
+  // Crossfilter Groups
+  groups: [
+    dateComposite: null
+  ],
+
+  // Compile Dimesions / Groups
+  compileMetrics: function() {
+
+    if(this.get('content.isLoaded')){
+
+      var data = this.get('content')._data;
+
+      // Parse Dates
+      data.forEach(function(d, i) {
+        d.date = moment(d.created).toDate();
+        delete d.created;
+      });
+
+      // Setup Crossfilter
+      var ndx = crossfilter(data);
+
+      // Date Dimension
+      this.set('dimension.date', ndx.dimension(function(d) { return d.date; }));
+      this.set('group.dateComposite', this.get('dimension.date').group(d3.time.day).reduce(
+        function(p, v){
+            return {
+              lead_count: p.lead_count+1,
+              spend: p.spend + v.price,
+              sold_count: (v.status == 'sold') ? p.sold_count + 1 : p.sold_count,
+              contacted_count: (v.status == 'contacted') ? p.contacted_count + 1 : p.contacted_count,
+            }
+        },
+        function(p, v){
+          return {
+            lead_count: p.lead_count-1,
+            spend: p.spend - v.price,
+            sold_count: (v.status == 'sold') ? p.sold_count - 1 : p.sold_count,
+            contacted_count: (v.status == 'contacted') ? p.contacted_count - 1 : p.contacted_count,
+          }
+        },
+        function(){return {lead_count:0, spend:0, sold_count:0, contacted_count: 0};}
+      ));
+
+    }
+
+  }.observes('content.isLoaded')
+
 
 });

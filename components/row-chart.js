@@ -1,6 +1,5 @@
-App.RowChartComponent = Ember.Component.extend({
+App.RowChart = App.BaseChartComponent.extend({
   classNames: ['row-chart'],
-  data: null,
   didInsertElement: function() {
     var rowChart = dc.rowChart(this);
 

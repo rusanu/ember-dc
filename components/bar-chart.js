@@ -1,6 +1,6 @@
-App.BarChartComponent = Ember.Component.extend({
+App.BarChartComponent = App.BaseChartComponent.extend({
   classNames: ['bar-chart'],
-  data: null,
+
   didInsertElement: function() {
     var barChart = dc.barChart(this);
 
@@ -36,6 +36,8 @@ App.BarChartComponent = Ember.Component.extend({
     barChart.xAxis().tickFormat(
         function (v) { return v + "%"; });
     barChart.yAxis().ticks(5);
+
+    barChart.render();
   }
 });
 
