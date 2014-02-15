@@ -1,17 +1,15 @@
 App.PieChart = App.BaseChartComponent.extend({
   classNames: ['pie-chart'],
-  didInsertElement: function() {
-    var pieChart = dc.pieChart(this);
 
-    // create categorical dimension
-    var gainOrLoss = ndx.dimension(function (d) {
-        return d.open > d.close ? "Loss" : "Gain";
-    });
-    // produce counts records in the dimension
-    var gainOrLossGroup = gainOrLoss.group();
+  createChart: function() {
 
+    if(this.get('group') == null){
+        return false;
+    }
 
-    pieChart
+    this.chart = dc.pieChart('#'+this.$().context.id);
+
+    this.chart
         .width(180) // (optional) define chart width, :default = 200
         .height(180) // (optional) define chart height, :default = 200
         .radius(80) // define pie radius
@@ -37,5 +35,11 @@ App.PieChart = App.BaseChartComponent.extend({
         // (optional) define color value accessor
         .colorAccessor(function(d, i){return d.value;})
         */;
-  }
+
+    this.chart.render();
+
+    this.responsive();
+
+  }.on('didInsertElement').observes('group')
+
 });

@@ -1,17 +1,15 @@
 App.BarChartComponent = App.BaseChartComponent.extend({
   classNames: ['bar-chart'],
 
-  didInsertElement: function() {
-    var barChart = dc.barChart(this);
+  createChart: function() {
 
-    // determine a histogram of percent changes
-    var fluctuation = ndx.dimension(function (d) {
-        return Math.round((d.close - d.open) / d.open * 100);
-    });
-    var fluctuationGroup = fluctuation.group();
+    if(this.get('group') == null){
+        return false;
+    }
 
+    this.chart = dc.barChart('#'+this.$().context.id);
 
-    barChart.width(420)
+    this.chart.width(420)
         .height(180)
         .margins({top: 10, right: 50, bottom: 30, left: 40})
         .dimension(fluctuation)
@@ -32,12 +30,12 @@ App.BarChartComponent = App.BaseChartComponent.extend({
             return s;
         });
 
-    // Customize axis
-    barChart.xAxis().tickFormat(
-        function (v) { return v + "%"; });
-    barChart.yAxis().ticks(5);
 
-    barChart.render();
-  }
+    this.chart.render();
+
+    this.responsive();
+
+    }.on('didInsertElement').observes('group')
+
 });
 

@@ -1,11 +1,15 @@
 App.StackableChart = App.BaseChartComponent.extend({
   classNames: ['stackable-chart'],
-  didInsertElement: function() {
-    var stackableChart = dc.stableChart(this);
 
-    //#### Stacked Area Chart
-    //Specify an area chart, by using a line chart with `.renderArea(true)`
-    stackableChart
+  createChart: function() {
+
+    if(this.get('group') == null){
+        return false;
+    }
+
+    this.chart = dc.stackableChart('#'+this.$().context.id);
+
+    this.chart
         .renderArea(true)
         .width(990)
         .height(200)
@@ -40,5 +44,11 @@ App.StackableChart = App.BaseChartComponent.extend({
             return dateFormat(d.key) + "\n" + numberFormat(value);
         });
 
-  }
+
+    this.chart.render();
+
+    this.responsive();
+
+  }.on('didInsertElement').observes('group')
+
 });

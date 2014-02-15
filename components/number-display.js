@@ -1,6 +1,18 @@
 App.NumberDisplay = App.BaseChartComponent.extend({
   classNames: ['number-display'],
-  didInsertElement: function() {
-    var numberDisplay = dc.numberDisplay(this);
-  }
+
+  createChart: function() {
+
+    if(this.get('group') == null){
+        return false;
+    }
+
+    this.chart = dc.numberDisplay('#'+this.$().context.id);
+
+    this.chart.render();
+
+    this.responsive();
+
+  }.on('didInsertElement').observes('group')
+
 });
