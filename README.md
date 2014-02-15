@@ -58,7 +58,7 @@ Components (templates)
 Ember DC Components uses [node.js](http://nodejs.org/) and [gulp](http://gulpjs.com/) as a build system,
 These two libraries will need to be installed before building.
 
-To build Ember Session, clone the repository, and run `npm install` to install build dependencies
+To build Ember DC Components, clone the repository, and run `npm install` to install build dependencies
 and `gulp` to build the library.
 
 Unminified and minified builds of Ember DC Components will be placed in the `dist` directory

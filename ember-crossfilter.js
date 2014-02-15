@@ -12,30 +12,21 @@ EmberCrossfilter = Ember.Mixin.create({
    * @type {Array}
    * Computed Metrics
    */
-  metrics: [
-    {value:'lead_count', label: 'Leads'},
-    {value:'spend', label: 'Spend'},
-    {value:'sold_count', label: 'Sells'},
-    {value:'contacted_count', label: 'Contacted'}
-  ],
+  metrics: [],
 
   /**
    * @property metrics
    * @type {Array}
    * Crossfilter Dimensions
    */
-  dimensions: [
-    date: null
-  ],
+  dimensions: [],
 
   /**
    * @property metrics
    * @type {Array}
    * Crossfilter Groups
    */
-  groups: [
-    dateComposite: null
-  ],
+  groups: [],
 
   /**
    * @method init
@@ -92,9 +83,7 @@ EmberCrossfilter = Ember.Mixin.create({
    * @return {void}
    * @private
    */
-  _createDimensions: function() {
-
-  },
+  _createDimensions: function() {},
 
 
   /**
@@ -103,9 +92,7 @@ EmberCrossfilter = Ember.Mixin.create({
    * @return {void}
    * @private
    */
-  _createGroups: function() {
-
-  }
+  _createGroups: function() {}
 
 
 });
