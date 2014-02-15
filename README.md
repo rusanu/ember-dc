@@ -1,8 +1,10 @@
-# Ember DC Components (dc.js)
+# Ember DC (dc.js)
 
 ## Introduction
 
 Ember DC - Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js (dc.js)
+
+Ember Component Wrappers for [dc.js](http://nickqizhu.github.io/dc.js/)
 
 I just started wrapping the components so bare with me
 
