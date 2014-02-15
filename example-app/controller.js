@@ -1,4 +1,4 @@
-App.IndexController = Ember.ArrayController.create(EmberDC, {
+App.IndexController = Ember.ArrayController.extend(EmberDC, {
 
   /**
    * @property metrics
@@ -6,11 +6,11 @@ App.IndexController = Ember.ArrayController.create(EmberDC, {
    * Computed Metrics
    */
   metrics: [
-    {value:'lead_count',      label: 'Leads'},
-    {value:'spend',           label: 'Spend'},
-    {value:'sold_count',      label: 'Sells'},
-    {value:'contacted_count', label: 'Contacted'}
+    {value:'sighting',       label: 'Sightings'}
   ],
+
+  startDate: moment().subtract('years', 50),
+  endDate: moment().subtract('years', 4),
 
   /**
    * @method _createDimensions
@@ -19,17 +19,26 @@ App.IndexController = Ember.ArrayController.create(EmberDC, {
    * @private
    */
   _createDimensions: function() {
+    var self = this;
 
     var content = Ember.get(this, 'content');
 
-      // Parse Dates
     content.forEach(function(d, i) {
-      d.date = moment(d.created).toDate();
-      delete d.created;
+      d.date = moment(d.sighted, 'YYYYMMDD').toDate();
+    });
+
+    d3.json("us-states.json", function (statesJson) {
+      self.set('usStates', statesJson);
     });
 
     // Date Dimension
-    this.set('dimension.date', ndx.dimension(function(d) { return d.date; }));
+    this.set('dimensions.date', this._crossfilter.dimension(function(d) { return d.date; }));
+    this.set('dimensions.state', this._crossfilter.dimension(function (d) { return d.state; }));
+    this.set('dimensions.daysOfWeek', this._crossfilter.dimension(function (d) {
+      var day = d.date.getDay();
+      var name=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      return day+"."+name[day];
+    }));
   },
 
 
@@ -40,25 +49,23 @@ App.IndexController = Ember.ArrayController.create(EmberDC, {
    * @private
    */
   _createGroups: function() {
-    this.set('group.dateComposite', this.get('dimension.date').group(d3.time.day).reduce(
+    this.set('groups.all', this._crossfilter.groupAll());
+    this.set('groups.daysOfWeek', this.get('dimensions.daysOfWeek').group());
+    this.set('groups.dateComposite', this.get('dimensions.date').group(d3.time.month).reduce(
       function(p, v){
           return {
-            lead_count: p.lead_count+1,
-            spend: p.spend + v.price,
-            sold_count: (v.status == 'sold') ? p.sold_count + 1 : p.sold_count,
-            contacted_count: (v.status == 'contacted') ? p.contacted_count + 1 : p.contacted_count,
+            sighting: p.sighting+1
           }
       },
       function(p, v){
         return {
-          lead_count: p.lead_count-1,
-          spend: p.spend - v.price,
-          sold_count: (v.status == 'sold') ? p.sold_count - 1 : p.sold_count,
-          contacted_count: (v.status == 'contacted') ? p.contacted_count - 1 : p.contacted_count,
+          sighting: p.sighting-1
         }
       },
-      function(){return {lead_count:0, spend:0, sold_count:0, contacted_count: 0};}
+      function(){return {sighting:0};}
     ));
+
+    this.set('groups.state', this.get('dimensions.state').group());
   }
 
 

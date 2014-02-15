@@ -2,7 +2,6 @@ App.BaseChartComponent = Ember.Component.extend({
   classNames: ['chart'],
   chart: null,
   renderArea: false,
-  brushOn: false,
   metrics: [],
   defaultMetric: null,
   height: 200,

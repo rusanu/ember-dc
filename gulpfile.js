@@ -74,12 +74,12 @@ gulp.task('app-templates', function() {
       }
      }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(appPaths.dist));
 });
 
 gulp.task('app-scripts', function() {
   return gulp.src(appPaths.scripts)
-    .pipe(concat("components.js"))
+    .pipe(concat("app.js"))
     .pipe(gulp.dest(appPaths.dist))
 });
 

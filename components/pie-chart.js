@@ -1,7 +1,10 @@
-App.PieChart = App.BaseChartComponent.extend({
+App.PieChartComponent = App.BaseChartComponent.extend({
   classNames: ['pie-chart'],
 
+  height: 200,
+
   createChart: function() {
+    var self = this;
 
     if(this.get('group') == null){
         return false;
@@ -9,18 +12,18 @@ App.PieChart = App.BaseChartComponent.extend({
 
     this.chart = dc.pieChart('#'+this.$().context.id);
 
+    var radius = (this.height > this.$().width()) ? this.$().width() : this.height;
+
     this.chart
-        .width(180) // (optional) define chart width, :default = 200
-        .height(180) // (optional) define chart height, :default = 200
-        .radius(80) // define pie radius
-        .dimension(gainOrLoss) // set dimension
-        .group(gainOrLossGroup) // set group
-        /* (optional) by default pie chart will use group.key as it's label
-         * but you can overwrite it with a closure */
+        .width(this.$().width())
+        .height(this.height)
+        .radius(radius / 2)
+        .dimension(this.dimension)
+        .group(this.group)
         .label(function (d) {
-            if (pieChart.hasFilter() && !pieChart.hasFilter(d.key))
+            if (self.chart.hasFilter() && !self.chart.hasFilter(d.key))
                 return d.key + "(0%)";
-            return d.key + "(" + Math.floor(d.value / all.value() * 100) + "%)";
+            return d.key + "(" + Math.floor(d.value / self.all.value() * 100) + "%)";
         }) /*
         // (optional) whether chart should render labels, :default = true
         .renderLabel(true)

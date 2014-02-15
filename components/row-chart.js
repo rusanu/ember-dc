@@ -1,4 +1,4 @@
-App.RowChart = App.BaseChartComponent.extend({
+App.RowChartComponent = App.BaseChartComponent.extend({
   classNames: ['row-chart'],
 
   createChart: function() {
@@ -9,11 +9,12 @@ App.RowChart = App.BaseChartComponent.extend({
 
     this.chart = dc.rowChart('#'+this.$().context.id);
 
-    this.chart.width(180)
-        .height(180)
+    this.chart
+        .width(this.$().width())
+        .height(this.height) 
         .margins({top: 20, left: 10, right: 10, bottom: 20})
-        .group(dayOfWeekGroup)
-        .dimension(dayOfWeek)
+        .group(this.group)
+        .dimension(this.dimension)
         .label(function (d) {
             return d.key.split(".")[1];
         })
@@ -23,6 +24,8 @@ App.RowChart = App.BaseChartComponent.extend({
         })
         .elasticX(true)
         .xAxis().ticks(4);
+
+
 
     this.chart.render();
 

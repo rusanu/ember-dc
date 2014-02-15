@@ -1,4 +1,4 @@
-App.ScatterPlot = App.BaseChartComponent.extend({
+App.ScatterPlotComponent = App.BaseChartComponent.extend({
   classNames: ['scatter-plot'],
 
   createChart: function() {

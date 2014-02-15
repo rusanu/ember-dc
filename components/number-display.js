@@ -1,4 +1,4 @@
-App.NumberDisplay = App.BaseChartComponent.extend({
+App.NumberDisplayComponent = App.BaseChartComponent.extend({
   classNames: ['number-display'],
 
   createChart: function() {

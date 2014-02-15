@@ -1,4 +1,4 @@
-App.StackableChart = App.BaseChartComponent.extend({
+App.StackableChartComponent = App.BaseChartComponent.extend({
   classNames: ['stackable-chart'],
 
   createChart: function() {

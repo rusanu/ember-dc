@@ -5,7 +5,7 @@ EmberDC = Ember.Mixin.create({
    * @type {Object}
    * @private
    */
-  _crossfilter = null,
+  _crossfilter: null,
 
   /**
    * @property metrics
@@ -75,7 +75,7 @@ EmberDC = Ember.Mixin.create({
      this._crossfilter = window.crossfilter(content);
      this._createDimensions();
      this._createGroups();
-  }
+  },
 
   /**
    * @method _createDimensions

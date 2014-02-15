@@ -1,4 +1,4 @@
-App.HeatMap = App.BaseChartComponent.extend({
+App.HeatMapComponent = App.BaseChartComponent.extend({
   classNames: ['heat-map'],
 
   createChart: function() {

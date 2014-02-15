@@ -1,4 +1,4 @@
-App.BoxPlot = App.BaseChartComponent.extend({
+App.BoxPlotComponent = App.BaseChartComponent.extend({
   classNames: ['box-plot'],
 
   createChart: function() {
