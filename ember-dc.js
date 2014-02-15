@@ -1,4 +1,4 @@
-EmberCrossfilter = Ember.Mixin.create({
+EmberDC = Ember.Mixin.create({
 
   /**
    * @property _crossfilter

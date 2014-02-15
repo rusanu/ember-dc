@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Ember DC Components - Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js (dc.js)
+Ember DC - Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js (dc.js)
 
 I just started wrapping the components so bare with me
 
@@ -54,11 +54,11 @@ Components (templates)
 
 ```
 
-## Building Ember DC Components
-Ember DC Components uses [node.js](http://nodejs.org/) and [gulp](http://gulpjs.com/) as a build system,
+## Building Ember DC
+Ember DC uses [node.js](http://nodejs.org/) and [gulp](http://gulpjs.com/) as a build system,
 These two libraries will need to be installed before building.
 
-To build Ember DC Components, clone the repository, and run `npm install` to install build dependencies
+To build Ember DC, clone the repository, and run `npm install` to install build dependencies
 and `gulp` to build the library.
 
-Unminified and minified builds of Ember DC Components will be placed in the `dist` directory
+Unminified and minified builds of Ember DC will be placed in the `dist` directory
