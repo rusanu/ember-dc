@@ -161,5 +161,3 @@ Run `gulp example-app` to build the example app.
 Run `node example-app/server.js` to start the server.
 
 Open [http://localhost:3001](http://localhost:3001) in the browser.
-
-Tag: d3 graphs, d3 charts, ember graphs, ember charts
