@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Ember DC - Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js (dc.js)
+Ember DC - Multi-Dimensional charts built to work natively with crossfilter rendered with d3.js (dc.js)
 
 Ember Component Wrappers for [dc.js](http://nickqizhu.github.io/dc.js/)
 
@@ -161,3 +161,5 @@ Run `gulp example-app` to build the example app.
 Run `node example-app/server.js` to start the server.
 
 Open [http://localhost:3001](http://localhost:3001) in the browser.
+
+Tag: d3 graphs, d3 charts, ember graphs, ember charts
