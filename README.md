@@ -163,3 +163,5 @@ Run `gulp example-app` to build the example app.
 Run `node example-app/server.js` to start the server.
 
 Open [http://localhost:3001](http://localhost:3001) in the browser.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andrewreedy/ember-dc/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
