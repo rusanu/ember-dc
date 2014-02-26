@@ -1,4 +1,4 @@
-App.LineChartComponent = App.BaseChartComponent.extend({
+App.LineChartComponent = Ember.Component.extend( App.StackMixin, App.CoordinateGridMixin, {
   classNames: ['line-chart'],
 
   startDate: moment().subtract('days', 29),
@@ -31,24 +31,18 @@ App.LineChartComponent = App.BaseChartComponent.extend({
     });
 
     this.chart
-      .width(this.$().width())
-      .height(this.height)
-      .margins({top: 30, right: 5, bottom: 55, left: 30})
       .x(d3.time.scale().domain([this.startDate.toDate(), this.endDate.toDate()]))
       .xUnits(d3.time.days)
       //.renderArea(this.renderArea)
-      .elasticY(true)
+      .elasticY(this.elasticY)
       .brushOn(this.brushOn)
       .renderHorizontalGridLines(true)
       //.renderDataPoints({radius: 4})
-      .dimension(this.get('dimension'))
-      .group(this.get('group'))
       .ordinalColors(["#56B2EA","#E064CD","#F8B700","#78CC00","#7B71C5"])
       .shareColors(true)
       .compose(charts)
       .legend(dc.legend().horizontal(1).itemWidth(70).x(10).y(this.height-20).gap(5))
       .yAxisPadding(this.yAxisPadding)
-      .renderTitle(true)
       .title(function (p) {
           return [p.key,
                  "Spend: " + p.spend]
@@ -56,9 +50,7 @@ App.LineChartComponent = App.BaseChartComponent.extend({
       })
       .yAxis().ticks(5).tickFormat(d3.format("d"));
 
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 

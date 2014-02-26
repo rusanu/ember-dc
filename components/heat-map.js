@@ -1,4 +1,4 @@
-App.HeatMapComponent = App.BaseChartComponent.extend({
+App.HeatMapComponent = Ember.Component.extend( App.ColorMixin, App.MarginMixin, App.BaseMixin, {
   classNames: ['heat-map'],
 
   createChart: function() {
@@ -9,9 +9,7 @@ App.HeatMapComponent = App.BaseChartComponent.extend({
 
     this.chart = dc.heatMap('#'+this.$().context.id);
 
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 

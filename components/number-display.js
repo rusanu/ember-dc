@@ -1,4 +1,4 @@
-App.NumberDisplayComponent = App.BaseChartComponent.extend({
+App.NumberDisplayComponent = Ember.Component.extend( App.BaseMixin, {
   classNames: ['number-display'],
 
   createChart: function() {
@@ -9,9 +9,7 @@ App.NumberDisplayComponent = App.BaseChartComponent.extend({
 
     this.chart = dc.numberDisplay('#'+this.$().context.id);
 
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 

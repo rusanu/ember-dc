@@ -1,0 +1,45 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ember DC</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#">UFO Example</a></li>
+        <li><a href="#">Stock Example</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">UFO Sightings</h1>
+
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          {{pie-chart
+            dimension=dimensions.state
+            group=groups.state
+            all=groups.all
+          }}
+          <h4>States</h4>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          {{row-chart
+            dimension=dimensions.daysOfWeek
+            group=groups.daysOfWeek
+          }}
+          <h4>Days of Week</h4>
+        </div>
+        <div class="col-xs-6 col-sm-6 placeholder">
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

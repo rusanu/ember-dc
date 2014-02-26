@@ -1,6 +1,6 @@
-App.BubbleChartComponent = Ember.Component.extend( App.BubbleMixin, App.CoordinateGridMixin, {
+App.BubbleOverlayChartComponent = Ember.Component.extend( App.BubbleMixin, App.BaseMixin, {
 
-  classNames: ['bubble-chart'],
+  classNames: ['bubble-overlay-chart'],
 
   createChart: function() {
 

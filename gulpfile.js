@@ -20,6 +20,7 @@ var paths = {
   dist: 'dist',
   templates: 'templates/**/*.hbs',
   scripts: [
+    'mixins/*.js',
     'components/*.js'
   ],
   styles: 'style.less'
@@ -27,14 +28,12 @@ var paths = {
 
 var appPaths = {
   dist: 'example-app/dist',
-  templates: 'example-app/index.hbs',
+  templates: 'example-app/templates/*.hbs',
   scripts: [
-    'example-app/controller.js'
+    'example-app/controllers/*.js',
+    'example-app/router.js'
   ],
-  scripts: [
-    'example-app/controller.js'
-  ],
-  styles: 'example-app/app.less'
+  styles: 'example-app/styles/app.less'
 };
 
 // Ember DC

@@ -27,7 +27,7 @@ App.IndexController = Ember.ArrayController.extend(EmberDC, {
       d.date = moment(d.sighted, 'YYYYMMDD').toDate();
     });
 
-    d3.json("us-states.json", function (statesJson) {
+    d3.json("data/us-states.json", function (statesJson) {
       self.set('usStates', statesJson);
     });
 

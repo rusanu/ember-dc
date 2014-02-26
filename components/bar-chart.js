@@ -1,4 +1,4 @@
-App.BarChartComponent = App.BaseChartComponent.extend({
+App.BarChartComponent = Ember.Component.extend( App.StackMixin, App.CoordinateGridMixin, {
   classNames: ['bar-chart'],
 
   createChart: function() {
@@ -9,12 +9,7 @@ App.BarChartComponent = App.BaseChartComponent.extend({
 
     this.chart = dc.barChart('#'+this.$().context.id);
 
-    this.chart.width(420)
-        .height(180)
-        .margins({top: 10, right: 50, bottom: 30, left: 40})
-        .dimension(fluctuation)
-        .group(fluctuationGroup)
-        .elasticY(true)
+    this.chart
         // (optional) whether bar should be center to its x value. Not needed for ordinal chart, :default=false
         .centerBar(true)
         // (optional) set gap between bars manually in px, :default=2
@@ -31,11 +26,9 @@ App.BarChartComponent = App.BaseChartComponent.extend({
         });
 
 
-    this.chart.render();
+    this.renderChart();
 
-    this.responsive();
-
-    }.on('didInsertElement').observes('group')
+  }.on('didInsertElement').observes('group')
 
 });
 

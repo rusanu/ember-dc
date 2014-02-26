@@ -1,7 +1,12 @@
-App.PieChartComponent = App.BaseChartComponent.extend({
+App.PieChartComponent = Ember.Component.extend( App.CapMixin, App.ColorMixin, App.BaseMixin, {
   classNames: ['pie-chart'],
 
   height: 200,
+
+  // radius: function() {
+  //   radius = (this.height > this.width) ? this.width : this.height;
+  //   return (radius / 2);
+  // },
 
   createChart: function() {
     var self = this;
@@ -12,19 +17,19 @@ App.PieChartComponent = App.BaseChartComponent.extend({
 
     this.chart = dc.pieChart('#'+this.$().context.id);
 
-    var radius = (this.height > this.$().width()) ? this.$().width() : this.height;
+    //this.chartOptions.push('radius');
 
-    this.chart
-        .width(this.$().width())
-        .height(this.height)
-        .radius(radius / 2)
-        .dimension(this.dimension)
-        .group(this.group)
-        .label(function (d) {
-            if (self.chart.hasFilter() && !self.chart.hasFilter(d.key))
-                return d.key + "(0%)";
-            return d.key + "(" + Math.floor(d.value / self.all.value() * 100) + "%)";
-        }) /*
+    //console.log(this.radius);
+
+    // this.chart
+    //     .radius(radius / 2)
+    //     .label(function (d) {
+    //         if (self.chart.hasFilter() && !self.chart.hasFilter(d.key))
+    //             return d.key + "(0%)";
+    //         return d.key + "(" + Math.floor(d.value / self.all.value() * 100) + "%)";
+    //     }) 
+
+        /*
         // (optional) whether chart should render labels, :default = true
         .renderLabel(true)
         // (optional) if inner radius is used then a donut chart will be generated instead of pie chart
@@ -39,9 +44,7 @@ App.PieChartComponent = App.BaseChartComponent.extend({
         .colorAccessor(function(d, i){return d.value;})
         */;
 
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 

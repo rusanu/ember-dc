@@ -1,4 +1,4 @@
-App.ScatterPlotComponent = App.BaseChartComponent.extend({
+App.ScatterPlotComponent = Ember.Component.extend( App.CoordinateGridMixin, {
   classNames: ['scatter-plot'],
 
   createChart: function() {
@@ -9,10 +9,7 @@ App.ScatterPlotComponent = App.BaseChartComponent.extend({
 
     this.chart = dc.scatterPlot('#'+this.$().context.id);
 
-
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 

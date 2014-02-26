@@ -1,4 +1,4 @@
-App.BoxPlotComponent = App.BaseChartComponent.extend({
+App.BoxPlotComponent = Ember.Component.extend( App.CoordinateGridMixin, {
   classNames: ['box-plot'],
 
   createChart: function() {
@@ -9,9 +9,7 @@ App.BoxPlotComponent = App.BaseChartComponent.extend({
 
     this.chart = dc.boxPlot('#'+this.$().context.id);
 
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 

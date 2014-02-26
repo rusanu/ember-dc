@@ -1,35 +1,29 @@
-App.RowChartComponent = App.BaseChartComponent.extend({
+App.RowChartComponent = Ember.Component.extend( App.CapMixin, App.MarginMixin, App.ColorMixin, App.BaseMixin, {
   classNames: ['row-chart'],
+
+  label: function (d) {
+    return d.key.split(".")[1];
+  },
 
   createChart: function() {
 
     if(this.get('group') == null){
-        return false;
+      return false;
     }
 
     this.chart = dc.rowChart('#'+this.$().context.id);
 
-    this.chart
-        .width(this.$().width())
-        .height(this.height) 
-        .margins({top: 20, left: 10, right: 10, bottom: 20})
-        .group(this.group)
-        .dimension(this.dimension)
-        .label(function (d) {
-            return d.key.split(".")[1];
-        })
-        // title sets the row text
-        .title(function (d) {
-            return d.value;
-        })
-        .elasticX(true)
-        .xAxis().ticks(4);
+    this.title(function (d) {
+      return d.value;
+    });
 
+    // this.label(function (d) {
+    //   return d.key.split(".")[1];
+    // });
 
+    this.chart.xAxis().ticks(4);
 
-    this.chart.render();
-
-    this.responsive();
+    this.renderChart();
 
   }.on('didInsertElement').observes('group')
 
