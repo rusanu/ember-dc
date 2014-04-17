@@ -8,6 +8,8 @@ Ember Component Wrappers for [dc.js](http://nickqizhu.github.io/dc.js/)
 
 (still working on abstracting all of the classes, will add more detailed examples / api instructions when I'm finished) If you'd like to help check out the [master dc.js api docs](https://github.com/dc-js/dc.js/blob/master/web/docs/api-latest.md) to read more about the mixins and charts.
 
+*Haven't had an ember project recently so didn't finish this please feel free to continue wrapping dc and submit pull requests*
+
 ![demo](http://cl.ly/image/3d2T1A0a2420/Screen%20Shot%202014-02-15%20at%204.36.31%20AM.png)
 
 ## Features
