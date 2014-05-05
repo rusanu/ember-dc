@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "ember": "~1.5.0-beta.4",
-    "dcjs": "https://github.com/dc-js/dc.js.git",
+    "dcjs": "https://github.com/dc-js/dc.js.git#master",
     "jquery": "~2.1.0"
   }
 }
