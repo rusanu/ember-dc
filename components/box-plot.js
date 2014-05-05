@@ -1,4 +1,4 @@
-App.BoxPlotComponent = Ember.Component.extend( App.CoordinateGridMixin, {
+Ember.EmberDC.BoxPlotComponent = Ember.Component.extend( Ember.EmberDC.CoordinateGridMixin, {
   classNames: ['box-plot'],
 
   createChart: function() {

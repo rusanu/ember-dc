@@ -1,4 +1,4 @@
-App.NumberDisplayComponent = Ember.Component.extend( App.BaseMixin, {
+Ember.EmberDC.NumberDisplayComponent = Ember.Component.extend( Ember.EmberDC.BaseMixin, {
   classNames: ['number-display'],
 
   createChart: function() {

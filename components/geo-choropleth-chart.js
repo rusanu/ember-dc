@@ -1,4 +1,4 @@
-App.GeoChoroplethChartComponent = Ember.Component.extend( App.ColorMixin, App.BaseMixin, {
+Ember.EmberDC.GeoChoroplethChartComponent = Ember.Component.extend( Ember.EmberDC.ColorMixin, Ember.EmberDC.BaseMixin, {
   classNames: ['geo-choropleth-chart'],
 
   height: 500,

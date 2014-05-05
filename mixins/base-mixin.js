@@ -1,4 +1,4 @@
-App.BaseMixin = Ember.Mixin.create({
+Ember.EmberDC.BaseMixin = Ember.Mixin.create({
   classNames: ['chart'],
 
   chartOptions: [

@@ -1,4 +1,4 @@
-App.DataTableComponent = Ember.Component.extend( App.BaseMixin, {
+Ember.EmberDC.DataTableComponent = Ember.Component.extend( Ember.EmberDC.BaseMixin, {
 
   table: null,
 

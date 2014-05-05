@@ -1,3 +1,3 @@
-App.BubbleMixin = Ember.Mixin.create({
+Ember.EmberDC.BubbleMixin = Ember.Mixin.create({
 
 });

@@ -1,4 +1,4 @@
-App.HeatMapComponent = Ember.Component.extend( App.ColorMixin, App.MarginMixin, App.BaseMixin, {
+Ember.EmberDC.HeatMapComponent = Ember.Component.extend( Ember.EmberDC.ColorMixin, Ember.EmberDC.MarginMixin, Ember.EmberDC.BaseMixin, {
   classNames: ['heat-map'],
 
   createChart: function() {

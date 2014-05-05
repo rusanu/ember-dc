@@ -1,3 +1,3 @@
-App.CompositeChartComponent = Ember.Component.extend( App.CoordinateGridMixin, {
+Ember.EmberDC.CompositeChartComponent = Ember.Component.extend( Ember.EmberDC.CoordinateGridMixin, {
 
 });

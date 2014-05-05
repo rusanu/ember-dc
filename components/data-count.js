@@ -1,3 +1,3 @@
-App.DataCountComponent = Ember.Component.extend( App.BaseMixin, {
+Ember.EmberDC.DataCountComponent = Ember.Component.extend( Ember.EmberDC.BaseMixin, {
 
 });

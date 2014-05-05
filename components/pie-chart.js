@@ -1,4 +1,4 @@
-App.PieChartComponent = Ember.Component.extend( App.CapMixin, App.ColorMixin, App.BaseMixin, {
+Ember.EmberDC.PieChartComponent = Ember.Component.extend( Ember.EmberDC.CapMixin, Ember.EmberDC.ColorMixin, Ember.EmberDC.BaseMixin, {
   classNames: ['pie-chart'],
 
   height: 200,
@@ -27,7 +27,7 @@ App.PieChartComponent = Ember.Component.extend( App.CapMixin, App.ColorMixin, Ap
     //         if (self.chart.hasFilter() && !self.chart.hasFilter(d.key))
     //             return d.key + "(0%)";
     //         return d.key + "(" + Math.floor(d.value / self.all.value() * 100) + "%)";
-    //     }) 
+    //     })
 
         /*
         // (optional) whether chart should render labels, :default = true

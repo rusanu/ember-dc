@@ -1,4 +1,4 @@
-App.BubbleChartComponent = Ember.Component.extend( App.BubbleMixin, App.CoordinateGridMixin, {
+Ember.EmberDC.BubbleChartComponent = Ember.Component.extend( Ember.EmberDC.BubbleMixin, Ember.EmberDC.CoordinateGridMixin, {
 
   classNames: ['bubble-chart'],
 

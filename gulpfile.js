@@ -56,6 +56,16 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(paths.dist))
 });
 
+gulp.task('release', function() {
+  return gulp.src([
+      'dist/components.js',
+      'dist/templates.js',
+      'ember-dc.js'
+    ])
+    .pipe(concat("ember-dc.js"))
+    .pipe(gulp.dest(paths.dist))
+});
+
 gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe(less())
@@ -91,7 +101,7 @@ gulp.task('app-styles', function() {
 
 
 gulp.task('default', function(callback) {
-  runSequence('templates', 'scripts', 'styles', callback);
+  runSequence('templates', 'scripts', 'release', 'styles', callback);
 });
 
 gulp.task('example-app', function(callback) {

@@ -1,4 +1,4 @@
-App.MarginMixin = Ember.Mixin.create({
+Ember.EmberDC.MarginMixin = Ember.Mixin.create({
 
   /**
    * @property margins

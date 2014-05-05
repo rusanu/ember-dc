@@ -1,4 +1,4 @@
-App.RowChartComponent = Ember.Component.extend( App.CapMixin, App.MarginMixin, App.ColorMixin, App.BaseMixin, {
+Ember.EmberDC.RowChartComponent = Ember.Component.extend( Ember.EmberDC.CapMixin, Ember.EmberDC.MarginMixin, Ember.EmberDC.ColorMixin, Ember.EmberDC.BaseMixin, {
   classNames: ['row-chart'],
 
   label: function (d) {

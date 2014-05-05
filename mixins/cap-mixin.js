@@ -1,3 +1,3 @@
-App.CapMixin = Ember.Mixin.create({
+Ember.EmberDC.CapMixin = Ember.Mixin.create({
 
 });

@@ -1,3 +1,3 @@
-App.CoordinateGridMixin = Ember.Mixin.create({
+Ember.EmberDC.CoordinateGridMixin = Ember.Mixin.create({
 
 });

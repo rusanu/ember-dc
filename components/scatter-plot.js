@@ -1,4 +1,4 @@
-App.ScatterPlotComponent = Ember.Component.extend( App.CoordinateGridMixin, {
+Ember.EmberDC.ScatterPlotComponent = Ember.Component.extend( Ember.EmberDC.CoordinateGridMixin, {
   classNames: ['scatter-plot'],
 
   createChart: function() {

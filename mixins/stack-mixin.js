@@ -1,3 +1,3 @@
-App.StackMixin = Ember.Mixin.create({
+Ember.EmberDC.StackMixin = Ember.Mixin.create({
 
 });

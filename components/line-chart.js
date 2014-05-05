@@ -1,4 +1,4 @@
-App.LineChartComponent = Ember.Component.extend( App.StackMixin, App.CoordinateGridMixin, {
+Ember.EmberDC.LineChartComponent = Ember.Component.extend( Ember.EmberDC.StackMixin, Ember.EmberDC.CoordinateGridMixin, {
   classNames: ['line-chart'],
 
   startDate: moment().subtract('days', 29),

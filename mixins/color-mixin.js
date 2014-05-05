@@ -1,3 +1,3 @@
-App.ColorMixin = Ember.Mixin.create({
+Ember.EmberDC.ColorMixin = Ember.Mixin.create({
 
 });

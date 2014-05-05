@@ -1,3 +1,3 @@
-App.SeriesChartComponent = App.CompositeChartComponent.extend({
+Ember.EmberDC.SeriesChartComponent = Ember.EmberDC.CompositeChartComponent.extend({
 
 });

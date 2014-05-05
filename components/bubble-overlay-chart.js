@@ -1,4 +1,4 @@
-App.BubbleOverlayChartComponent = Ember.Component.extend( App.BubbleMixin, App.BaseMixin, {
+Ember.EmberDC.BubbleOverlayChartComponent = Ember.Component.extend( Ember.EmberDC.BubbleMixin, Ember.EmberDC.BaseMixin, {
 
   classNames: ['bubble-overlay-chart'],
 

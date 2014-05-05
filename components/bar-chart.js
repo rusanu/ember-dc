@@ -1,4 +1,4 @@
-App.BarChartComponent = Ember.Component.extend( App.StackMixin, App.CoordinateGridMixin, {
+Ember.EmberDC.BarChartComponent = Ember.Component.extend( Ember.EmberDC.StackMixin, Ember.EmberDC.CoordinateGridMixin, {
   classNames: ['bar-chart'],
 
   createChart: function() {
