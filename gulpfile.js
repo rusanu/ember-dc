@@ -20,6 +20,7 @@ var paths = {
   dist: '',
   templates: 'templates/**/*.hbs',
   scripts: [
+    'src/base.js',
     'src/mixins/*.js',
     'src/components/*.js'
   ],
