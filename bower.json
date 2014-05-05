@@ -2,7 +2,10 @@
   "name": "ember-dc",
   "description": "Multi-Dimensional charts, graphs, maps, data-table with crossfilter and d3.js (dc.js)",
   "version": "0.0.3",
-  "main": ["dist/ember-dc.js", "dist/style.css"],
+  "main": [
+    "./dist/ember-dc.js",
+    "./dist/style.css"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
@@ -14,13 +17,11 @@
     "dist/components.js",
     "dist/templates.js",
     "component.json",
-    "composer.json",
     "README.md",
     "LICENCE",
     "gulpfile.js",
     "package.js",
     "package.json",
-    "ember-dc.js",
     "style.less"
   ],
   "dependencies": {

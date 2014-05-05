@@ -59,8 +59,7 @@ gulp.task('scripts', function() {
 gulp.task('release', function() {
   return gulp.src([
       'dist/components.js',
-      'dist/templates.js',
-      'ember-dc.js'
+      'dist/templates.js'
     ])
     .pipe(concat("ember-dc.js"))
     .pipe(gulp.dest(paths.dist))
