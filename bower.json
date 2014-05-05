@@ -20,7 +20,7 @@
     "gulpfile.js",
     "package.js",
     "package.json",
-    "ember-dc.js"
+    "ember-dc.js",
     "style.less"
   ],
   "dependencies": {
