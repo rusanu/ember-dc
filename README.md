@@ -12,6 +12,22 @@ Ember Component Wrappers for [dc.js](http://nickqizhu.github.io/dc.js/)
 
 ![demo](http://cl.ly/image/3d2T1A0a2420/Screen%20Shot%202014-02-15%20at%204.36.31%20AM.png)
 
+## Installation
+Install via bower (optional)
+```
+bower install --save ember-dc
+```
+
+Include ember-dc.js in your project (this step is up to you)
+
+
+Then extend your Ember app with Jquery or your favorite object extension function
+```
+App = $.extend(App, EmberDC);
+```
+
+Now you can use the EmberDCMixin and components. Please refer to the example app for more detail.
+
 ## Features
 
 - Responsive Charts
@@ -144,7 +160,6 @@ App.IndexController = Ember.ArrayController.extend(EmberDC, {
 });
 
 ```
-
 
 ## Building Ember DC
 Ember DC uses [node.js](http://nodejs.org/) and [gulp](http://gulpjs.com/) as a build system,

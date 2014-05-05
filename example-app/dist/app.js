@@ -1,4 +1,4 @@
-App.StockController = Ember.ArrayController.extend(EmberDC, {
+App.StockController = Ember.ArrayController.extend(App.EmberDCMixin, {
 
   /**
    * @property metrics
@@ -71,7 +71,7 @@ App.StockController = Ember.ArrayController.extend(EmberDC, {
 
 });
 
-App.IndexController = Ember.ArrayController.extend(EmberDC.ControllerMixin, {
+App.IndexController = Ember.ArrayController.extend(App.EmberDCMixin, {
 
   /**
    * @property metrics
