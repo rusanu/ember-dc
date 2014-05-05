@@ -17,23 +17,13 @@ var banner = [
 ].join('\n');
 
 var paths = {
-  dist: 'dist',
+  dist: '',
   templates: 'templates/**/*.hbs',
   scripts: [
-    'mixins/*.js',
-    'components/*.js'
+    'src/mixins/*.js',
+    'src/components/*.js'
   ],
-  styles: 'style.less'
-};
-
-var appPaths = {
-  dist: 'example-app/dist',
-  templates: 'example-app/templates/*.hbs',
-  scripts: [
-    'example-app/controllers/*.js',
-    'example-app/router.js'
-  ],
-  styles: 'example-app/styles/app.less'
+  styles: 'src/ember-dc.less'
 };
 
 // Ember DC
@@ -46,23 +36,23 @@ gulp.task('templates', function() {
       }
      }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest('tmp'));
 });
 
 gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
     //.pipe(watch())
     .pipe(concat("components.js"))
-    .pipe(gulp.dest(paths.dist))
+    .pipe(gulp.dest('tmp'))
 });
 
 gulp.task('release', function() {
   return gulp.src([
-      'dist/components.js',
-      'dist/templates.js'
+      'tmp/components.js',
+      'tmp/templates.js'
     ])
     .pipe(concat("ember-dc.js"))
-    .pipe(gulp.dest(paths.dist))
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('styles', function() {
@@ -72,37 +62,6 @@ gulp.task('styles', function() {
     .pipe(gulp.dest(paths.dist));
 });
 
-// Example App
-gulp.task('app-templates', function() {
-  gulp.src([appPaths.templates])
-    .pipe(handlebars({
-      outputType: 'browser',
-      processName: function(path) {
-        return path.replace('.hbs', '');
-      }
-     }))
-    .pipe(concat('templates.js'))
-    .pipe(gulp.dest(appPaths.dist));
-});
-
-gulp.task('app-scripts', function() {
-  return gulp.src(appPaths.scripts)
-    .pipe(concat("app.js"))
-    .pipe(gulp.dest(appPaths.dist))
-});
-
-gulp.task('app-styles', function() {
-  return gulp.src(appPaths.styles)
-    .pipe(less())
-    .pipe(header(banner, { pkg : pkg } ))
-    .pipe(gulp.dest(appPaths.dist));
-});
-
-
 gulp.task('default', function(callback) {
   runSequence('templates', 'scripts', 'release', 'styles', callback);
-});
-
-gulp.task('example-app', function(callback) {
-  runSequence('app-templates', 'app-scripts', 'app-styles', callback);
 });
