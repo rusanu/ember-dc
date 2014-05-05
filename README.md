@@ -174,8 +174,11 @@ Builds of Ember DC will be placed in the root directory
 ## Building Example App
 
 Navigate to the `example-app` directory.
+
 Run `bower install` to install the dependencies.
+
 Run `gulp` to build the example app.
+
 Run `node server.js` to start the server.
 
 Open [http://localhost:3001](http://localhost:3001) in the browser.
