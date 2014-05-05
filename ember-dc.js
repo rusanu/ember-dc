@@ -7,7 +7,7 @@
 EmberDC = {};
 
 // Controller Mixin
-EmberDC.EmberDCMixin = Ember.Mixin.create({
+EmberDC.ControllerMixin = Ember.Mixin.create({
 
   /**
    * @property _crossfilter
@@ -75,7 +75,7 @@ EmberDC.EmberDCMixin = Ember.Mixin.create({
 
     // Checks whether we have a defined controller, and/or no content.
     var hasDefinedCrossfilter   = !!this._crossfilter,
-        hasNoContent            = !content.get('length');
+        hasNoContent            = !content.length;
 
     // If we don't want have any content yet, or a defined Crossfilter, then either
     // the content hasn't been loaded yet, or we've already created the Crossfilter.
