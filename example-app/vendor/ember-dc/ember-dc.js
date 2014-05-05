@@ -1,4 +1,4 @@
-Ember.EmberDC.BaseMixin = Ember.Mixin.create({
+EmberDC.BaseMixin = Ember.Mixin.create({
   classNames: ['chart'],
 
   chartOptions: [
@@ -194,19 +194,19 @@ Ember.EmberDC.BaseMixin = Ember.Mixin.create({
 
 });
 
-Ember.EmberDC.BubbleMixin = Ember.Mixin.create({
+EmberDC.BubbleMixin = Ember.Mixin.create({
 
 });
-Ember.EmberDC.CapMixin = Ember.Mixin.create({
+EmberDC.CapMixin = Ember.Mixin.create({
 
 });
-Ember.EmberDC.ColorMixin = Ember.Mixin.create({
+EmberDC.ColorMixin = Ember.Mixin.create({
 
 });
-Ember.EmberDC.CoordinateGridMixin = Ember.Mixin.create({
+EmberDC.CoordinateGridMixin = Ember.Mixin.create({
 
 });
-Ember.EmberDC.MarginMixin = Ember.Mixin.create({
+EmberDC.MarginMixin = Ember.Mixin.create({
 
   /**
    * @property margins
@@ -223,10 +223,10 @@ Ember.EmberDC.MarginMixin = Ember.Mixin.create({
 
 
 });
-Ember.EmberDC.StackMixin = Ember.Mixin.create({
+EmberDC.StackMixin = Ember.Mixin.create({
 
 });
-Ember.EmberDC.BarChartComponent = Ember.Component.extend( Ember.EmberDC.StackMixin, Ember.EmberDC.CoordinateGridMixin, {
+EmberDC.BarChartComponent = Ember.Component.extend( EmberDC.StackMixin, EmberDC.CoordinateGridMixin, {
   classNames: ['bar-chart'],
 
   createChart: function() {
@@ -261,7 +261,7 @@ Ember.EmberDC.BarChartComponent = Ember.Component.extend( Ember.EmberDC.StackMix
 });
 
 
-Ember.EmberDC.BoxPlotComponent = Ember.Component.extend( Ember.EmberDC.CoordinateGridMixin, {
+EmberDC.BoxPlotComponent = Ember.Component.extend( EmberDC.CoordinateGridMixin, {
   classNames: ['box-plot'],
 
   createChart: function() {
@@ -277,7 +277,7 @@ Ember.EmberDC.BoxPlotComponent = Ember.Component.extend( Ember.EmberDC.Coordinat
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.BubbleChartComponent = Ember.Component.extend( Ember.EmberDC.BubbleMixin, Ember.EmberDC.CoordinateGridMixin, {
+EmberDC.BubbleChartComponent = Ember.Component.extend( EmberDC.BubbleMixin, EmberDC.CoordinateGridMixin, {
 
   classNames: ['bubble-chart'],
 
@@ -294,7 +294,7 @@ Ember.EmberDC.BubbleChartComponent = Ember.Component.extend( Ember.EmberDC.Bubbl
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.BubbleOverlayChartComponent = Ember.Component.extend( Ember.EmberDC.BubbleMixin, Ember.EmberDC.BaseMixin, {
+EmberDC.BubbleOverlayChartComponent = Ember.Component.extend( EmberDC.BubbleMixin, EmberDC.BaseMixin, {
 
   classNames: ['bubble-overlay-chart'],
 
@@ -311,13 +311,13 @@ Ember.EmberDC.BubbleOverlayChartComponent = Ember.Component.extend( Ember.EmberD
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.CompositeChartComponent = Ember.Component.extend( Ember.EmberDC.CoordinateGridMixin, {
+EmberDC.CompositeChartComponent = Ember.Component.extend( EmberDC.CoordinateGridMixin, {
 
 });
-Ember.EmberDC.DataCountComponent = Ember.Component.extend( Ember.EmberDC.BaseMixin, {
+EmberDC.DataCountComponent = Ember.Component.extend( EmberDC.BaseMixin, {
 
 });
-Ember.EmberDC.DataTableComponent = Ember.Component.extend( Ember.EmberDC.BaseMixin, {
+EmberDC.DataTableComponent = Ember.Component.extend( EmberDC.BaseMixin, {
 
   table: null,
 
@@ -356,7 +356,7 @@ Ember.EmberDC.DataTableComponent = Ember.Component.extend( Ember.EmberDC.BaseMix
   }.on('didInsertElement').observes('dimension')
 
 });
-Ember.EmberDC.GeoChoroplethChartComponent = Ember.Component.extend( Ember.EmberDC.ColorMixin, Ember.EmberDC.BaseMixin, {
+EmberDC.GeoChoroplethChartComponent = Ember.Component.extend( EmberDC.ColorMixin, EmberDC.BaseMixin, {
   classNames: ['geo-choropleth-chart'],
 
   height: 500,
@@ -412,7 +412,7 @@ Ember.EmberDC.GeoChoroplethChartComponent = Ember.Component.extend( Ember.EmberD
 
 });
 
-Ember.EmberDC.HeatMapComponent = Ember.Component.extend( Ember.EmberDC.ColorMixin, Ember.EmberDC.MarginMixin, Ember.EmberDC.BaseMixin, {
+EmberDC.HeatMapComponent = Ember.Component.extend( EmberDC.ColorMixin, EmberDC.MarginMixin, EmberDC.BaseMixin, {
   classNames: ['heat-map'],
 
   createChart: function() {
@@ -428,7 +428,7 @@ Ember.EmberDC.HeatMapComponent = Ember.Component.extend( Ember.EmberDC.ColorMixi
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.LineChartComponent = Ember.Component.extend( Ember.EmberDC.StackMixin, Ember.EmberDC.CoordinateGridMixin, {
+EmberDC.LineChartComponent = Ember.Component.extend( EmberDC.StackMixin, EmberDC.CoordinateGridMixin, {
   classNames: ['line-chart'],
 
   startDate: moment().subtract('days', 29),
@@ -486,7 +486,7 @@ Ember.EmberDC.LineChartComponent = Ember.Component.extend( Ember.EmberDC.StackMi
 
 });
 
-Ember.EmberDC.NumberDisplayComponent = Ember.Component.extend( Ember.EmberDC.BaseMixin, {
+EmberDC.NumberDisplayComponent = Ember.Component.extend( EmberDC.BaseMixin, {
   classNames: ['number-display'],
 
   createChart: function() {
@@ -502,7 +502,7 @@ Ember.EmberDC.NumberDisplayComponent = Ember.Component.extend( Ember.EmberDC.Bas
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.PieChartComponent = Ember.Component.extend( Ember.EmberDC.CapMixin, Ember.EmberDC.ColorMixin, Ember.EmberDC.BaseMixin, {
+EmberDC.PieChartComponent = Ember.Component.extend( EmberDC.CapMixin, EmberDC.ColorMixin, EmberDC.BaseMixin, {
   classNames: ['pie-chart'],
 
   height: 200,
@@ -553,7 +553,7 @@ Ember.EmberDC.PieChartComponent = Ember.Component.extend( Ember.EmberDC.CapMixin
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.RowChartComponent = Ember.Component.extend( Ember.EmberDC.CapMixin, Ember.EmberDC.MarginMixin, Ember.EmberDC.ColorMixin, Ember.EmberDC.BaseMixin, {
+EmberDC.RowChartComponent = Ember.Component.extend( EmberDC.CapMixin, EmberDC.MarginMixin, EmberDC.ColorMixin, EmberDC.BaseMixin, {
   classNames: ['row-chart'],
 
   label: function (d) {
@@ -583,7 +583,7 @@ Ember.EmberDC.RowChartComponent = Ember.Component.extend( Ember.EmberDC.CapMixin
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.ScatterPlotComponent = Ember.Component.extend( Ember.EmberDC.CoordinateGridMixin, {
+EmberDC.ScatterPlotComponent = Ember.Component.extend( EmberDC.CoordinateGridMixin, {
   classNames: ['scatter-plot'],
 
   createChart: function() {
@@ -599,178 +599,6 @@ Ember.EmberDC.ScatterPlotComponent = Ember.Component.extend( Ember.EmberDC.Coord
   }.on('didInsertElement').observes('group')
 
 });
-Ember.EmberDC.SeriesChartComponent = Ember.EmberDC.CompositeChartComponent.extend({
-
-});
-Ember.TEMPLATES["components/data-table"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  
-
-
-  data.buffer.push("<div id=\"data-table\">\n    <!-- create a custom header -->\n    <div class=\"header\">\n        <span>Date</span>\n    </div>\n    <!-- data rows will filled in here -->\n</div>");
-  
-});
-Ember.TEMPLATES["components/line-chart"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '';
-
-
-  return buffer;
-  
-});
-EmberDC = Ember.Mixin.create({
-
-  /**
-   * @property _crossfilter
-   * @type {Object}
-   * @private
-   */
-  _crossfilter: null,
-
-  /**
-   * @property metrics
-   * @type {Array}
-   * Computed Metrics
-   */
-  metrics: [],
-
-  /**
-   * @property dimensions
-   * @type {Array}
-   * Crossfilter Dimensions
-   */
-  dimensions: [],
-
-  /**
-   * @property groups
-   * @type {Array}
-   * Crossfilter Groups
-   */
-  groups: [],
-
-  /**
-   * @property chartGroup
-   * @type {String}
-   * Chart groups share common rendering events since it is
-   * expected they share the same underlying crossfilter data set.
-   */
-  chartGroup: 'group-name',
-
-  /**
-   * @method init
-   * Invoked when the controller is instantiated.
-   * @constructor
-   */
-  init: function init() {
-
-      this._super();
-
-      // Add the observer to create the Crossfilter when we have some content.
-      Ember.addObserver(this, 'content.length', this, '_createCrossfilter');
-
-      // Create the Crossfilter.
-      this._createCrossfilter();
-
-  },
-
-  /**
-   * @method _createCrossfilter
-   * Creates the Crossfilter from the content.
-   * @return {Boolean}
-   * @private
-   */
-  _createCrossfilter: function() {
-
-    // Create the Crossfilter, and then create the dimensions.
-    var content = Ember.get(this, 'content');
-
-    // Checks whether we have a defined controller, and/or no content.
-    var hasDefinedCrossfilter   = !!this._crossfilter,
-        hasNoContent            = !content.length;
-
-    // If we don't want have any content yet, or a defined Crossfilter, then either
-    // the content hasn't been loaded yet, or we've already created the Crossfilter.
-    if (hasNoContent || hasDefinedCrossfilter) {
-        return false;
-    }
-
-    // Remove the observer because we don't want to keep triggering this method when
-    // the content updates.
-    Ember.removeObserver(this, 'content.length', this, '_createCrossfilter');
-
-    // Create the Crossfilter and its related dimensions.
-     this._crossfilter = window.crossfilter(content);
-     this._createDimensions();
-     this._createGroups();
-  },
-
-  /**
-   * @method _createDimensions
-   * Create the defined dimensions from the controller.
-   * @return {void}
-   * @private
-   */
-  _createDimensions: function() {},
-
-
-  /**
-   * @method _createGroups
-   * Create the defined groups from the controller.
-   * @return {void}
-   * @private
-   */
-  _createGroups: function() {},
-
-  actions: {
-
-    /**
-     * @method filterAll
-     * Clear all filters on every chart within the given chart group.
-     * If the chart group is not given then only charts that belong
-     * to the default chart group will be reset.
-     * @return {void}
-     */
-    filterAll: function() {
-      dc.filterAll(this.chartGroup);
-    },
-
-    /**
-     * @method refocusAll
-     * Reset zoom level / focus on all charts that belong to the given
-     * chart group. If the chart group is not given then only charts
-     * that belong to the default chart group will be reset.
-     * @return {void}
-     */
-    refocusAll: function() {
-      dc.refocusAll(this.chartGroup);
-    },
-
-    /**
-     * @method renderAll
-     * Re-render all charts belong to the given chart group. If the chart
-     * group is not given then only charts that belong to the default
-     * chart group will be re-rendered.
-     * @return {void}
-     */
-    renderAll: function() {
-      dc.renderAll(this.chartGroup);
-    },
-
-    /**
-     * @method redrawAll
-     * Redraw all charts belong to the given chart group. If the chart group
-     * is not given then only charts that belong to the default chart group
-     * will be re-drawn. Redraw is different from re-render since when
-     * redrawing dc charts try to update the graphic incrementally instead
-     * of starting from scratch.
-     * @return {void}
-     */
-    redrawAll: function() {
-      dc.redrawAll(this.chartGroup);
-    }
-
-  }
+EmberDC.SeriesChartComponent = EmberDC.CompositeChartComponent.extend({
 
 });

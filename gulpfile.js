@@ -52,13 +52,13 @@ gulp.task('release', function() {
       'tmp/templates.js'
     ])
     .pipe(concat("ember-dc.js"))
+    .pipe(header(banner, { pkg : pkg } ))
     .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe(less())
-    .pipe(header(banner, { pkg : pkg } ))
     .pipe(gulp.dest(paths.dist));
 });
 
