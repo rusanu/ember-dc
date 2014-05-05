@@ -86,7 +86,7 @@ Controller
 
 ```javascript
 
-App.IndexController = Ember.ArrayController.extend(EmberDC, {
+App.IndexController = Ember.ArrayController.extend(EmberDCMixin, {
 
   /**
    * @property metrics
@@ -161,22 +161,21 @@ App.IndexController = Ember.ArrayController.extend(EmberDC, {
 
 ```
 
-## Building Ember DC
+## Building Ember DC For Development
 Ember DC uses [node.js](http://nodejs.org/) and [gulp](http://gulpjs.com/) as a build system,
 These two libraries will need to be installed before building.
 
 To build Ember DC, clone the repository, and run `npm install` to install build dependencies
 and `gulp` to build the library.
 
-Builds of Ember DC will be placed in the `dist` directory
+Builds of Ember DC will be placed in the root directory
 
 
 ## Building Example App
 
-Be sure to build the library first with `gulp`.
-
-Run `gulp example-app` to build the example app.
-
-Run `node example-app/server.js` to start the server.
+Navigate to the `example-app` directory.
+Run `bower install` to install the dependencies.
+Run `gulp` to build the example app.
+Run `node server.js` to start the server.
 
 Open [http://localhost:3001](http://localhost:3001) in the browser.
