@@ -7,7 +7,7 @@
 EmberDC = {};
 
 // Controller Mixin
-EmberDC.ControllerMixin = Ember.Mixin.create({
+EmberDC.EmberDCMixin = Ember.Mixin.create({
 
   /**
    * @property _crossfilter

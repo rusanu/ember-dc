@@ -1,4 +1,4 @@
-App.IndexController = Ember.ArrayController.extend(EmberDC.ControllerMixin, {
+App.IndexController = Ember.ArrayController.extend(App.EmberDCMixin, {
 
   /**
    * @property metrics
