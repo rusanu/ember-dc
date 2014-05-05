@@ -45,8 +45,6 @@ EmberDC = Ember.Mixin.create({
 
       this._super();
 
-      console.log('asdf');
-
       // Add the observer to create the Crossfilter when we have some content.
       Ember.addObserver(this, 'content.length', this, '_createCrossfilter');
 
@@ -65,9 +63,6 @@ EmberDC = Ember.Mixin.create({
 
     // Create the Crossfilter, and then create the dimensions.
     var content = Ember.get(this, 'content');
-
-    console.log(content);
-
 
     // Checks whether we have a defined controller, and/or no content.
     var hasDefinedCrossfilter   = !!this._crossfilter,
@@ -153,7 +148,7 @@ EmberDC = Ember.Mixin.create({
     redrawAll: function() {
       dc.redrawAll(this.chartGroup);
     }
-    
+
   }
 
 });
