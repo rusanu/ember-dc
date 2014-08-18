@@ -1,8 +1,8 @@
 EmberDC.LineChartComponent = Ember.Component.extend( EmberDC.StackMixin, EmberDC.CoordinateGridMixin, {
   classNames: ['line-chart'],
 
-  startDate: moment().subtract('days', 29),
-  endDate: moment(),
+  startDate: new Date(new Date()-86400000*29),
+  endDate:   new Date(),
 
   createChart: function() {
     var self = this;
@@ -31,7 +31,7 @@ EmberDC.LineChartComponent = Ember.Component.extend( EmberDC.StackMixin, EmberDC
     });
 
     this.chart
-      .x(d3.time.scale().domain([this.startDate.toDate(), this.endDate.toDate()]))
+      .x(d3.time.scale().domain([this.startDate, this.endDate]))
       .xUnits(d3.time.days)
       //.renderArea(this.renderArea)
       .elasticY(this.elasticY)
