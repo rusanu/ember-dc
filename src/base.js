@@ -1,6 +1,9 @@
 // EmberDC
 EmberDC = {};
 
+EmberDC.VERSION = "0.0.1";
+Ember.libraries.register("Ember DC", EmberDC.VERSION);
+
 // Controller Mixin
 EmberDC.ControllerMixin = Ember.Mixin.create({
 
