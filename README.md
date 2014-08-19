@@ -97,8 +97,8 @@ App.IndexController = Ember.ArrayController.extend(EmberDCMixin, {
     {value:'sighting',       label: 'Sightings'}
   ],
 
-  startDate: moment().subtract('years', 50),
-  endDate: moment().subtract('years', 4),
+  startDate: moment().subtract('years', 50).toDate(),
+  endDate: moment().subtract('years', 4).toDate(),
 
   /**
    * @method _createDimensions
