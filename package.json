@@ -4,7 +4,7 @@
   "author": "Andrew Reedy",
   "repository": {
     "type": "git",
-    "url": "git://github.com/andrewreedy/ember-dc.git"
+    "url": "git://github.com/rusanu/ember-dc.git"
   },
   "devDependencies": {
     "gulp": "~3.5.2",
